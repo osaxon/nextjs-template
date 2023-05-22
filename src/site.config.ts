@@ -11,6 +11,11 @@ type NavLink = {
   href: string;
 };
 
+type DocLink = {
+  label: string;
+  href: string;
+};
+
 type SiteConfig = {
   clientName: string;
   clientLogo: string;
@@ -18,6 +23,7 @@ type SiteConfig = {
   siteDescription: string;
   navLinks: NavLink[];
   navButtons: NavButton[];
+  docLinks: DocLink[];
   siteTheme: string;
   displayHero: boolean;
   heroText?: string;
@@ -27,7 +33,7 @@ type SiteConfig = {
 const siteConfig: SiteConfig = {
   clientName: "Client name",
   clientLogo: "/logo.png",
-  siteTitle: "Site name / logo",
+  siteTitle: "Site name",
   siteDescription: "Description",
   navLinks: [
     {
@@ -51,10 +57,24 @@ const siteConfig: SiteConfig = {
       style: "outline",
     },
   ],
+  docLinks: [
+    {
+      label: "Privacy policy",
+      href: "/",
+    },
+    {
+      label: "Terms of Service",
+      href: "/",
+    },
+    {
+      label: "Disclaimer",
+      href: "/",
+    },
+  ],
   displayHero: true,
   heroText: "Coming soon!",
   heroImg: "/images/heroImg.jpg",
-  siteTheme: "synthwave",
+  siteTheme: "cupcake",
 };
 
 export default siteConfig;

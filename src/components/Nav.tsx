@@ -4,7 +4,6 @@ import { useState } from "react";
 import { MenuButton } from "./ui/MenuButton";
 import { motion } from "framer-motion";
 import { SocialIcon } from "react-social-icons";
-import menu4 from "react-useanimations/lib/menu4";
 
 const btnThemeMap = new Map<string, string>();
 btnThemeMap.set("default", "btn btn-primary");

@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Hero from "@/components/Hero";
 import { MailingListForm } from "@/components/MailingListForm";
+import FAQAccordian from "@/components/FAQAccordian";
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +13,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+      <main className="container flex min-h-screen max-w-7xl flex-col">
+        <FAQAccordian />
         <MailingListForm />
       </main>
     </>
