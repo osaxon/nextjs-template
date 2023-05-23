@@ -7,8 +7,8 @@ import {
 
 export default function FAQAccordian() {
   return (
-    <section className="py-20">
-      <h3 className="text-3xl">Frequently Asked Questions</h3>
+    <section className="container py-20">
+      <h3 className="pb-6 text-3xl">Frequently Asked Questions</h3>
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Do you do xyz?</AccordionTrigger>

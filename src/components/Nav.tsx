@@ -28,24 +28,24 @@ export default function Nav() {
     closed: { opacity: 0, y: -120, transition: { duration: 0.2 } },
   };
 
-  const { siteTitle, navLinks, navButtons } = siteConfig;
+  const { siteTitle, navigation } = siteConfig;
 
   return (
-    <nav className="z-50">
+    <nav className="absolute inset-0 z-50">
       <div className="relative flex w-full cursor-pointer items-center justify-between p-6 sm:mx-auto sm:max-w-7xl">
         <div className="flex h-24 w-24 flex-col items-center justify-center gap-5 bg-primary font-bold text-base-content">
           <h1 className="font-poppins text-3xl font-bold ">LOGO</h1>
         </div>
 
         <ul className="hidden items-center gap-4 sm:flex">
-          {navLinks.map(({ label, href }, i) => (
+          {navigation.mainNavigation.map(({ label, href }, i) => (
             <li key={i}>
               <Link className="link text-2xl" href={href}>
                 {label}
               </Link>
             </li>
           ))}
-          {navButtons.map(({ label, href, style }, i) => (
+          {navigation.navButtons.map(({ label, href, style }, i) => (
             <li key={i}>
               <Link href={href}>
                 <button className={btnThemeMap.get(style)}>{label}</button>
@@ -53,10 +53,12 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-        <div className="z-50 rounded-full bg-base-content p-4 sm:hidden">
+
+        <div className="z-50 rounded-full sm:hidden">
           <MenuButton
             isOpen={isOpen}
-            strokeWidth="4"
+            strokeWidth="2"
+            width={38}
             onClick={() => {
               setIsClosed(!isClosed);
               setIsOpen(!isOpen);
@@ -101,7 +103,7 @@ export default function Nav() {
             </div>
 
             <div className="flex flex-col justify-center gap-5 text-3xl font-bold lg:text-5xl">
-              {navLinks.map(({ label, href }, i) => (
+              {navigation.mainNavigation.map(({ label, href }, i) => (
                 <div key={i + 1}>
                   <motion.li
                     variants={itemVariants}

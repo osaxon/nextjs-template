@@ -13,7 +13,7 @@ export default function Footer() {
 
           <div>
             <span className="footer-title">Site map</span>
-            {siteConfig.navLinks.map(({ label, href }) => (
+            {siteConfig.navigation.mainNavigation.map(({ label, href }) => (
               <Link className="link-hover link" key={href} href={href}>
                 {label}
               </Link>
@@ -22,7 +22,7 @@ export default function Footer() {
 
           <div>
             <span className="footer-title">Site map</span>
-            {siteConfig.docLinks.map(({ label, href }) => (
+            {siteConfig.navigation.docLinks.map(({ label, href }) => (
               <Link className="link-hover link" key={href} href={href}>
                 {label}
               </Link>

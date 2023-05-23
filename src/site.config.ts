@@ -11,9 +11,10 @@ type NavLink = {
   href: string;
 };
 
-type DocLink = {
-  label: string;
-  href: string;
+type Navigation = {
+  mainNavigation: NavLink[];
+  navButtons: NavButton[];
+  docLinks: NavLink[];
 };
 
 type SiteConfig = {
@@ -21,13 +22,12 @@ type SiteConfig = {
   clientLogo: string;
   siteTitle: string;
   siteDescription: string;
-  navLinks: NavLink[];
-  navButtons: NavButton[];
-  docLinks: DocLink[];
+  navigation: Navigation;
   siteTheme: string;
   displayHero: boolean;
   heroText?: string;
-  heroImg?: string;
+  headerImg: string;
+  heroImg: string;
 };
 
 const siteConfig: SiteConfig = {
@@ -35,46 +35,52 @@ const siteConfig: SiteConfig = {
   clientLogo: "/logo.png",
   siteTitle: "Site name",
   siteDescription: "Description",
-  navLinks: [
-    {
-      label: "About",
-      href: "/",
-    },
-    {
-      label: "FAQ",
-      href: "/",
-    },
-  ],
-  navButtons: [
-    {
-      label: "Contact",
-      href: "/",
-      style: "default",
-    },
-    {
-      label: "Sign up",
-      href: "/",
-      style: "outline",
-    },
-  ],
-  docLinks: [
-    {
-      label: "Privacy policy",
-      href: "/",
-    },
-    {
-      label: "Terms of Service",
-      href: "/",
-    },
-    {
-      label: "Disclaimer",
-      href: "/",
-    },
-  ],
+  navigation: {
+    mainNavigation: [
+      {
+        label: "About",
+        href: "/",
+      },
+      {
+        label: "Services",
+        href: "/",
+      },
+      {
+        label: "FAQ",
+        href: "/",
+      },
+    ],
+    navButtons: [
+      {
+        label: "Contact",
+        href: "/",
+        style: "default",
+      },
+      {
+        label: "Sign up",
+        href: "/",
+        style: "outline",
+      },
+    ],
+    docLinks: [
+      {
+        label: "Privacy policy",
+        href: "/",
+      },
+      {
+        label: "Terms of Service",
+        href: "/",
+      },
+      {
+        label: "Disclaimer",
+        href: "/",
+      },
+    ],
+  },
   displayHero: true,
-  heroText: "Coming soon!",
-  heroImg: "/images/heroImg.jpg",
-  siteTheme: "cupcake",
+  headerImg: "/images/VN_JUNGLE.jpg",
+  heroImg: "/images/VN_MOTORBIKE.jpg",
+  siteTheme: "pastel",
 };
 
 export default siteConfig;
