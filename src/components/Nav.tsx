@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import siteConfig from "@/site.config";
 import { useState } from "react";
 import { MenuButton } from "./ui/MenuButton";
@@ -13,6 +14,8 @@ export default function Nav() {
   const [isClosed, setIsClosed] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
+  const router = useRouter();
+  const isHomepage = router.pathname === "/";
 
   /* Mobile navigation Style */
   const isHiddenStyle = "hidden";
@@ -31,11 +34,14 @@ export default function Nav() {
   const { siteTitle, navigation } = siteConfig;
 
   return (
-    <nav className="absolute inset-0 z-50">
-      <div className="relative flex w-full cursor-pointer items-center justify-between p-6 sm:mx-auto sm:max-w-7xl">
-        <div className="flex h-24 w-24 flex-col items-center justify-center gap-5 bg-primary font-bold text-base-content">
-          <h1 className="font-poppins text-3xl font-bold ">LOGO</h1>
-        </div>
+    <nav className={isHomepage ? "absolute inset-0 z-50" : ""}>
+      <div className="relative flex w-full items-center justify-between p-6 sm:mx-auto sm:max-w-7xl">
+        <Link
+          href="/"
+          className="flex h-24 w-24 flex-col items-center justify-center gap-5 bg-primary font-bold text-base-content"
+        >
+          <h1 className="text-3xl font-bold">LOGO</h1>
+        </Link>
 
         <ul className="hidden items-center gap-4 sm:flex">
           {navigation.mainNavigation.map(({ label, href }, i) => (

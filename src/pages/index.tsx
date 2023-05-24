@@ -1,5 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import SectionWithImage from "@/components/SectionWithImage";
 import { MailingListForm } from "@/components/MailingListForm";
 import Hero from "@/components/Hero";

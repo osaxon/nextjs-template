@@ -52,8 +52,8 @@ const siteConfig: SiteConfig = {
     ],
     navButtons: [
       {
-        label: "Contact",
-        href: "/",
+        label: "Book Now",
+        href: "/book-appointment",
         style: "default",
       },
       {
