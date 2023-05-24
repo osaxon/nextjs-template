@@ -3,6 +3,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 type Style = "light" | "dark" | "bold";
+type ImgPosition = "left" | "right";
 
 type SectionProps = {
   title: string;
@@ -10,6 +11,7 @@ type SectionProps = {
   img: string;
   content: string;
   style: Style;
+  imgPosition: ImgPosition;
 };
 
 type StyleObject = {
@@ -36,7 +38,7 @@ styleMap.set("bold", {
 });
 
 export default function SectionWithImage(props: SectionProps) {
-  const { title, displayTitle, content, style, img } = props;
+  const { title, displayTitle, content, style, img, imgPosition } = props;
   const stylesObject = styleMap.get(style);
 
   if (!stylesObject) {
@@ -53,7 +55,12 @@ export default function SectionWithImage(props: SectionProps) {
       ])}
     >
       {displayTitle ?? <h2>{title}</h2>}
-      <div className="container flex flex-col gap-12 sm:flex-row">
+      <div
+        className={cn(
+          [imgPosition === "left" ? "sm:flex-row-reverse" : "sm:flex-row"],
+          "container flex flex-col gap-12"
+        )}
+      >
         <div className="flex flex-col items-center justify-evenly gap-y-8">
           <p
             className={cn([

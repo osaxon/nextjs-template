@@ -27,6 +27,7 @@ const Home: NextPage = () => {
           img={siteConfig.heroImg}
           content={content}
           style="dark"
+          imgPosition="left"
         />
       </main>
     </>
