@@ -20,7 +20,6 @@ const Home: NextPage = () => {
       <main className="flex flex-col">
         <Hero />
         <FAQAccordian />
-        <MailingListForm style="light" />
         <SectionWithImage
           displayTitle={false}
           title="first-section"
@@ -28,7 +27,9 @@ const Home: NextPage = () => {
           content={content}
           style="dark"
           imgPosition="left"
+          displayBGPattern={true}
         />
+        <MailingListForm style="light" />
       </main>
     </>
   );

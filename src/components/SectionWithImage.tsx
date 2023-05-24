@@ -1,6 +1,7 @@
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import BackgroundPattern from "./BackgroundPattern";
 
 type Style = "light" | "dark" | "bold";
 type ImgPosition = "left" | "right";
@@ -12,12 +13,14 @@ type SectionProps = {
   content: string;
   style: Style;
   imgPosition: ImgPosition;
+  displayBGPattern: boolean;
 };
 
 type StyleObject = {
   background: string;
   text: string;
   button: string;
+  backgroundStroke: string;
 };
 
 const styleMap = new Map<string, StyleObject>();
@@ -25,47 +28,65 @@ styleMap.set("light", {
   background: "bg-base-100",
   text: "text-base-content",
   button: "btn",
+  backgroundStroke: "stroke-primary",
 });
 styleMap.set("dark", {
   background: "bg-neutral",
   text: "text-neutral-content",
   button: "btn-secondary",
+  backgroundStroke: "stroke-base-100",
 });
 styleMap.set("bold", {
   background: "bg-secondary",
   text: "text-secondary-content",
   button: "btn-accent",
+  backgroundStroke: "stroke-base-100",
 });
 
 export default function SectionWithImage(props: SectionProps) {
-  const { title, displayTitle, content, style, img, imgPosition } = props;
+  const {
+    title,
+    displayTitle,
+    content,
+    style,
+    img,
+    imgPosition,
+    displayBGPattern,
+  } = props;
   const stylesObject = styleMap.get(style);
 
   if (!stylesObject) {
     return <div>Invalid style</div>;
   }
 
-  const { background, text, button } = stylesObject;
+  const { background, text, button, backgroundStroke } = stylesObject;
 
   return (
     <section
       className={cn([
         background,
-        "flex h-[100vh] flex-col items-center justify-center py-20",
+        "relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden py-20 @container",
       ])}
     >
+      {displayBGPattern && (
+        <BackgroundPattern
+          stroke={backgroundStroke}
+          className="absolute opacity-30"
+        />
+      )}
+
       {displayTitle ?? <h2>{title}</h2>}
       <div
         className={cn(
-          [imgPosition === "left" ? "sm:flex-row-reverse" : "sm:flex-row"],
-          "container flex flex-col gap-12"
+          [imgPosition === "left" ? "@4xl:flex-row-reverse" : "@4xl:flex-row"],
+          "container z-50 flex flex-col gap-12"
         )}
       >
-        <div className="flex flex-col items-center justify-evenly gap-y-8">
+        <div className="flex basis-2/5 flex-col items-center justify-evenly gap-y-8">
           <p
             className={cn([
               text,
-              "w-full text-center font-serif text-2xl tracking-wide",
+              "text-center font-serif text-xl tracking-wide sm:text-2xl",
             ])}
           >
             {content}
@@ -73,7 +94,7 @@ export default function SectionWithImage(props: SectionProps) {
           <button className={cn([button, "btn rounded-sm"])}>contact</button>
         </div>
 
-        <div className="h-auto w-full shrink-0 sm:w-1/2 md:w-7/12">
+        <div className="h-auto basis-3/5">
           <AspectRatio ratio={4 / 3}>
             <Image
               src={img}

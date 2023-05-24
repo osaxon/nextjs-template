@@ -7,6 +7,7 @@ type Props = SVGMotionProps<SVGElement> & {
   strokeWidth?: string | number;
   transition?: Transition;
   lineProps?: any;
+  width: number;
 };
 
 const defaultTransition: Transition = {

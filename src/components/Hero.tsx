@@ -1,7 +1,7 @@
 import siteConfig from "@/site.config";
 import Image from "next/image";
 import imgSrc from "/images/heroImg.jpg";
-import HeroBG from "./HeroBG";
+import HeroBG from "./BackgroundPattern";
 
 export default function Hero() {
   const { heroImg, heroText } = siteConfig;
