@@ -20,13 +20,13 @@ const Home: NextPage = () => {
       <main className="flex flex-col">
         <Hero />
         <FAQAccordian />
-        <MailingListForm />
+        <MailingListForm style="light" />
         <SectionWithImage
           displayTitle={false}
           title="first-section"
           img={siteConfig.heroImg}
           content={content}
-          theme="bold"
+          style="dark"
         />
       </main>
     </>
